@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{- title | safe -}}</title>
+
+    <style>
+      body {
+        font-family: 
+          -apple-system,
+          BlinkMacSystemFont,
+          helvetica,
+          'helvetica neue',
+          ubuntu,
+          roboto,
+          noto,
+          'segoe ui',
+          arial,
+          sans-serif;
+        line-height: 1.5em;
+        padding: 1.5em;
+        margin: 0 auto;
+        max-width: 65ch;
+      }
+
+      header {
+        border-bottom: 1px solid black;;
+        padding-bottom: 18px;
+        margin-bottom: 36px;
+      }
+
+      header nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      header nav ul li:first-child {
+        font-size: 1.2rem;
+        margin: 0 0 18px;
+      }
+
+      header nav ul li {
+        margin: 6px 0;
+      }
+
+      footer {
+        font-size: 0.875em;
+      }
+
+      @media (min-width: 80rem) {
+        header {
+          border: none;
+          margin: 0;
+          padding: 0;
+          position: relative;
+        }
+
+        header nav {
+          margin-right: 60px;
+          position: absolute;
+          right: 100%;
+          top: 0;
+        }
+
+        header nav ul {
+          text-align: right;
+        }
+
+        header nav ul li {
+          margin: 3px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <strong>nonplain.js + 11ty starter</strong>
+          </li>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/subpage">Subpage</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      {{ content | safe }}
+    </main>
+
+    <footer>
+      <p>
+        <span id="pubyear">2021</span>
+        <script>document.getElementById("pubyear").innerHTML = (new Date).getFullYear()</script>
+      </p>
+    </footer>
+  </body>
+</html>

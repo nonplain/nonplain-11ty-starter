@@ -1,0 +1,17 @@
+{
+  "name": "nonplain-11ty-starter",
+  "version": "0.0.0",
+  "description": "Create an 11ty website out of nonplain files",
+  "scripts": {
+    "prebuild": "node build-files.js",
+    "build": "npx @11ty/eleventy",
+    "dev": "npm run prebuild && npx @11ty/eleventy --serve"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "nonplain": "^0.0.5",
+    "nonplain-md-link": "^0.0.10",
+    "slug": "^5.1.0"
+  }
+}

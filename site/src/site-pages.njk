@@ -1,0 +1,14 @@
+---js
+{
+  layout: 'base.njk',
+  pagination: {
+      data: 'files',
+      size: 1,
+      alias: 'file',
+  },
+  permalink: '/{{ file.metadata.permalink }}/',
+  templateEngineOverride: 'njk, md',
+}
+---
+
+{{ file.body | safe }}
