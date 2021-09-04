@@ -6,4 +6,6 @@ permalink: /
 
 💻
 
-This site was built with [**nonplain.js**](https://github.com/nonplain/nonplain.js) and [**11ty**](https://www.11ty.dev/). Click [here](https://nonplain-11ty-markdown-notes.vercel.app/) to learn more.
+This site was built with [**nonplain.js**](https://github.com/nonplain/nonplain.js) and [**11ty**](https://www.11ty.dev/).
+
+[Check it out on GitHub](https://github.com/nonplain/nonplain-11ty-starter)
