@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Create an 11ty website out of nonplain files",
   "scripts": {
-    "prebuild": "node build-files.js",
+    "prebuild": "node runBuildFiles.js",
     "build": "npx @11ty/eleventy",
     "dev": "npm run prebuild && npx @11ty/eleventy --serve"
   },

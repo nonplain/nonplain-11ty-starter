@@ -6,10 +6,6 @@ const Files = require('nonplain').default;
 const Link = require('nonplain-md-link').default;
 const { regex } = require('nonplain-md-link');
 
-/*
- * UTILITY FUNCTIONS
- */
-
 /* If URL is an absolute path, we assume it's external */
 function isFullUrl(href) {
   try {
@@ -46,36 +42,36 @@ function markdownLinksToHTML(content) {
   });
 }
 
-/*
- * BUILD
- */
+function buildFiles() {
+  /* Hack for easy logging */
+  const print = console.log.bind(console, 'files-build:');
 
-/* Hack for easy logging */
-const print = console.log.bind(console, 'files-build:');
+  print('Building files...');
 
-print('Building files...');
+  /* Load all files into Files instance using glob */
+  const files = new Files().load('../files/**/*.md');
 
-/* Load all files into Files instance using glob */
-const files = new Files().load('../files/**/*.md');
+  /* Transform the files as necessary for the 11ty build */
+  files.transform(({ body, metadata }) => {
+    /* Convert all links to HTML */
+    const newBody = markdownLinksToHTML(body);
 
-/* Transform the files as necessary for the 11ty build */
-files.transform(({ body, metadata }) => {
-  /* Convert all links to HTML */
-  const newBody = markdownLinksToHTML(body);
+    /* Add a valid permalink for each file */
+    const newMetadata = {
+      ...metadata,
+      permalink: metadata.permalink || '/' + slug(metadata.title) + '/',
+    };
 
-  /* Add a valid permalink for each file */
-  const newMetadata = {
-    ...metadata,
-    permalink: metadata.permalink || '/' + slug(metadata.title) + '/',
-  };
+    return {
+      body: newBody,
+      metadata: newMetadata,
+    };
+  });
 
-  return {
-    body: newBody,
-    metadata: newMetadata,
-  };
-});
+  /* Export Files instance to JSON where 11ty can use it */
+  files.export2JSON('src/_data/files.json');
 
-/* Export Files instance to JSON where 11ty can use it */
-files.export2JSON('src/_data/files.json');
+  print('Done!', '\n');
+}
 
-print('Done!', '\n');
+module.exports = buildFiles;
