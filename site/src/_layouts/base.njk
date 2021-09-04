@@ -1,3 +1,13 @@
+{% set navTitle %}
+  <div style="display: inline-flex;">
+    <strong>
+      <div>nonplain</div>
+      <div>+ 11ty</div>
+      <div>starter</div>
+    </strong>
+  </div>
+{% endset %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,33 +30,40 @@
           arial,
           sans-serif;
         line-height: 1.5em;
-        padding: 1.5em;
-        margin: 0 auto;
-        max-width: 65ch;
+        margin: 0;
+        padding: 0;
       }
 
       header {
-        border-bottom: 1px solid black;;
-        padding-bottom: 18px;
-        margin-bottom: 36px;
+        border-bottom: 1px solid black;
       }
 
-      header nav ul {
+      nav ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
       }
 
-      header nav ul li:first-child {
+      nav ul li:first-child {
         font-size: 1.2rem;
         margin: 0 0 18px;
       }
 
-      header nav ul li {
+      nav ul li {
         margin: 6px 0;
       }
 
+      nav, main, footer {
+        margin: 0 auto;
+        max-width: 65ch;
+        padding: 1.5em;
+      }
+
       footer {
+        padding: 0 1.5em 1.5em;
+      }
+
+      footer * {
         font-size: 0.875em;
       }
 
@@ -62,26 +79,26 @@
           monospace;
       }
 
-      @media (min-width: 80rem) {
+      @media (min-width: 150ch) {
         header {
-          border: none;
-          margin: 0;
-          padding: 0;
+          border-bottom: none;
+          margin: 0 auto;
+          max-width: 65ch;
           position: relative;
         }
 
-        header nav {
+        nav {
           margin-right: 60px;
           position: absolute;
           right: 100%;
           top: 0;
         }
 
-        header nav ul {
+        nav ul {
           text-align: right;
         }
 
-        header nav ul li {
+        nav ul li {
           margin: 3px 0;
         }
       }
@@ -91,9 +108,7 @@
     <header>
       <nav>
         <ul>
-          <li>
-            <strong>nonplain.js + 11ty starter</strong>
-          </li>
+          <li>{{ navTitle | safe }}</li>
           <li>
             <a href="/">Home</a>
           </li>
@@ -109,10 +124,8 @@
     </main>
 
     <footer>
-      <p>
-        <span id="pubyear">2021</span>
-        <script>document.getElementById("pubyear").innerHTML = (new Date).getFullYear()</script>
-      </p>
+      <span id="pubyear">2021</span>
+      <script>document.getElementById("pubyear").innerHTML = (new Date).getFullYear()</script>
     </footer>
   </body>
 </html>
