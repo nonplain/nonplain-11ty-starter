@@ -16,4 +16,4 @@ Out of the box, this starter is:
 - Responsive
 - Ready for development
 
-Start creating content right away. Just [clone this starter on GitHub](https://github.com/nonplain/nonplain-11ty-starter) and edit the `.md` files in the "files" directory.
+Start creating content right away. Just [fork this starter on GitHub](https://github.com/nonplain/nonplain-11ty-starter) and edit the `.md` files in the "files" directory.
