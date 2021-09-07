@@ -12,6 +12,6 @@ Out of the box, this starter is:
 - Accessible
 - Performant
 - Responsive
-- Ready for development
+- Development-ready
 
 Start creating content right away. Just [fork this starter on GitHub](https://github.com/nonplain/nonplain-11ty-starter) and edit the `.md` files in the "files" directory.
