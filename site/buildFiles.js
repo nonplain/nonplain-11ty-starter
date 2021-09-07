@@ -35,8 +35,6 @@ function markdownLinksToHTML(content) {
 
       return link.composeHTML('rel="noreferrer" target="_blank"');
     } else {
-      link.path = '/' + slug(path.parse(link.path).name) + '/';
-
       return link.composeHTML();
     }
   });
