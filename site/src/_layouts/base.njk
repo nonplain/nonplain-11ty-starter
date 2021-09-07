@@ -1,12 +1,10 @@
 {% set navTitle %}
-  <div style="display: inline-flex;">
-    <strong>
-      <div>nonplain</div>
-      <div>+ 11ty</div>
-      <div>starter</div>
-    </strong>
-  </div>
-{% endset %}
+  <strong>
+    <div>nonplain</div>
+    <div>+ 11ty</div>
+    <div>starter</div>
+  </strong>
+{% endset -%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +32,20 @@
         padding: 0;
       }
 
+      nav, main, footer {
+        margin: 0 auto;
+        max-width: 65ch;
+        min-width: 280px;
+        padding: 1.5em;
+      }
+
       header {
         border-bottom: 1px solid black;
+      }
+
+      .nav-title {
+        font-size: 1.2rem;
+        margin-bottom: 18px;
       }
 
       nav ul {
@@ -44,23 +54,22 @@
         padding: 0;
       }
 
-      nav ul li:first-child {
-        font-size: 1.2rem;
-        margin: 0 0 18px;
-      }
-
       nav ul li {
         margin: 6px 0;
+        position: relative;
       }
 
-      nav, main, footer {
-        margin: 0 auto;
-        max-width: 65ch;
-        padding: 1.5em;
+      nav ul li a {
+        text-decoration: none;
+      }
+
+      nav ul li a:hover,
+      nav ul li.selected a {
+        text-decoration: underline;
       }
 
       footer {
-        padding: 0 1.5em 1.5em;
+        padding-top: 0;
       }
 
       footer * {
@@ -79,23 +88,34 @@
           monospace;
       }
 
+      img {
+        height: auto;
+        image-orientation: from-image;
+        max-width: 100%;
+        width: 100%;
+      }
+
       @media (min-width: 150ch) {
         header {
           border-bottom: none;
           margin: 0 auto;
           max-width: 65ch;
-          position: relative;
+          position: sticky;
+          top: 0;
         }
 
         nav {
           margin-right: 36px;
           position: absolute;
           right: 100%;
-          top: 0;
+          text-align: right;
         }
 
         nav ul {
-          text-align: right;
+          height: 85vh;
+          margin-right: -18px;
+          overflow-y: auto;
+          padding-right: 18px;
         }
 
         nav ul li {
@@ -107,13 +127,16 @@
   <body>
     <header>
       <nav>
+        <div class="nav-title">{{ navTitle | safe }}</div>
         <ul>
-          <li>{{ navTitle | safe }}</li>
-          <li>
+          <li {% if page.url == '/' %}class="selected"{% endif %}>
             <a href="/">Home</a>
           </li>
-          <li>
-            <a href="/subpage">Subpage</a>
+          <li {% if page.url == '/subpage/' %}class="selected"{% endif %}>
+            <a href="/subpage/">Subpage</a>
+          </li>
+          <li {% if r/^\/posts\//g.test(page.url) %}class="selected"{% endif %}>
+            <a href="/posts/">Posts</a>
           </li>
         </ul>
       </nav>
