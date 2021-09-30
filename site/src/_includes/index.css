@@ -76,23 +76,23 @@ nav ul li.selected a {
 
 ul.breadcrumb {
   display: flex;
+  list-style-type: none;
   margin: 0;
   opacity: 0.6;
-  padding: 0 0 0 0.65em;
+  padding: 0 0 0 0.1em;
 }
 
 ul.breadcrumb li {
-  margin-right: 6px;
+  margin-right: 0.3em;
 }
 
-ul.breadcrumb li::marker {
+ul.breadcrumb li::before {
   content: "/ ";
 }
 
 ul.breadcrumb li a {
   color: var(--fg);
   font-size: 0.875em;
-  margin-right: 0.5em;
 }
 
 footer {
