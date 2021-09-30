@@ -1,6 +1,5 @@
 ---
-title: nonplain-11ty-starter
-date: 2021-09-04
+title: About this site
 permalink: /
 ---
 

@@ -1,148 +1,62 @@
 {% set navTitle %}
-  <strong>
-    <div>nonplain</div>
-    <div>+ 11ty</div>
-    <div>starter</div>
-  </strong>
+  <a class="no-link-style" href="/">
+    <strong style="font-weight: 700;">
+      <span>nonplain</span>
+      <br />
+      <span>+ 11ty</span>
+      <br />
+      <span>starter</span>
+    </strong>
+  </a>
 {% endset -%}
+
+{% set pageTitle %}
+  {%- if page.url != '/' -%}
+    {{- title | safe }} -
+  {% endif -%}
+  nonplain-11ty-starter
+{%- endset -%}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{- pageTitle -}}</title>
     <meta name="description" content="Create an 11ty website out of nonplain files">
-    <title>{{- title | safe -}}</title>
 
+    {% set CSS -%}
+      {% include "index.css" %}
+    {%- endset %}
     <style>
-      body {
-        font-family: 
-          -apple-system,
-          BlinkMacSystemFont,
-          helvetica,
-          'helvetica neue',
-          ubuntu,
-          roboto,
-          noto,
-          'segoe ui',
-          arial,
-          sans-serif;
-        line-height: 1.5em;
-        margin: 0;
-        padding: 0;
-      }
-
-      nav, main, footer {
-        margin: 0 auto;
-        max-width: 65ch;
-        min-width: 280px;
-        padding: 1.5em;
-      }
-
-      header {
-        border-bottom: 1px solid black;
-      }
-
-      .nav-title {
-        font-size: 1.2rem;
-        margin-bottom: 18px;
-      }
-
-      nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      nav ul li {
-        margin: 6px 0;
-        position: relative;
-      }
-
-      nav ul li a {
-        text-decoration: none;
-      }
-
-      nav ul li a:hover,
-      nav ul li.selected a {
-        text-decoration: underline;
-      }
-
-      footer {
-        padding-top: 0;
-      }
-
-      footer * {
-        font-size: 0.875em;
-      }
-
-      code {
-        font-family:
-          "SFMono-Regular",
-          Hack,
-          Menlo,
-          Monaco,
-          Consolas,
-          "Liberation Mono",
-          Courier,
-          monospace;
-      }
-
-      img {
-        height: auto;
-        image-orientation: from-image;
-        max-width: 100%;
-        width: 100%;
-      }
-
-      @media (min-width: 150ch) {
-        header {
-          border-bottom: none;
-          margin: 0 auto;
-          max-width: 65ch;
-          position: sticky;
-          top: 0;
-        }
-
-        nav {
-          margin-right: 36px;
-          position: absolute;
-          right: 100%;
-          text-align: right;
-        }
-
-        nav ul {
-          height: 85vh;
-          margin-right: -18px;
-          overflow-y: auto;
-          padding-right: 18px;
-        }
-
-        nav ul li {
-          margin: 3px 0;
-        }
-      }
+      {{ CSS | cssmin | safe }}
     </style>
   </head>
   <body>
     <header>
       <nav>
         <div class="nav-title">{{ navTitle | safe }}</div>
+
+        {% set navPages = collections.all | eleventyNavigation %}
+        {% macro renderNavListItem(entry) -%}
+          <li{% if entry.key == eleventyNavigation.root %} class="selected"{% endif %}>
+            <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+          </li>
+        {%- endmacro %}
         <ul>
-          <li {% if page.url == '/' %}class="selected"{% endif %}>
-            <a href="/">Home</a>
-          </li>
-          <li {% if page.url == '/subpage/' %}class="selected"{% endif %}>
-            <a href="/subpage/">Subpage</a>
-          </li>
-          <li {% if r/^\/posts\//g.test(page.url) %}class="selected"{% endif %}>
-            <a href="/posts/">Posts</a>
-          </li>
+          {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
         </ul>
       </nav>
+
+      <h1 id="hidden-header" style="font-size: 0; opacity: 0; max-height: 0; max-width: 0;">{{ title }}</h1>
     </header>
 
     <main>
+      {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true }) | eleventyNavigationToHtml({
+        listClass: 'breadcrumb'
+      }) | safe }}
+
       {{ content | safe }}
     </main>
 

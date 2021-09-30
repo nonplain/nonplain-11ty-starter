@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "description": "Create an 11ty website out of nonplain files",
   "scripts": {
-    "prebuild": "node runBuildFiles.js",
+    "prebuild": "node build-files/bin.js",
     "build": "npx @11ty/eleventy",
     "dev": "npm run prebuild && npx @11ty/eleventy --serve"
   },
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-navigation": "^0.3.2",
+    "clean-css": "^5.2.0",
     "nonplain": "^0.0.5",
     "nonplain-md-link": "^0.0.10",
     "slug": "^5.1.0"

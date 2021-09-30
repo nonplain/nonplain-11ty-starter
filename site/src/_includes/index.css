@@ -1,0 +1,297 @@
+/* Variables */
+:root {
+  /* Colors */
+  --blue-700: #055095;
+  --gray-600: #7f8285;
+  --gray-800: #54595c;
+  --gray: #292f33;
+  --white: #fff;
+
+  --bg: var(--white);
+  --fg: var(--gray);
+  --code: var(--blue-700);
+  --link: var(--gray-800);
+  --link-hover: var(--gray-600);
+
+  /* Fonts */
+  --font-body: -apple-system, BlinkMacSystemFont, helvetica, "helvetica neue",
+    ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+  --font-mono: "SFMono-Regular", Hack, Menlo, Monaco, Consolas,
+    "Liberation Mono", Courier, monospace;
+}
+
+/* Layout */
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  line-height: 1.6em;
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+}
+
+nav,
+main,
+footer {
+  margin: 0 auto;
+  max-width: 65ch;
+  min-width: 280px;
+  padding: 1.5em;
+}
+
+header {
+  border-bottom: 1px solid black;
+}
+
+.nav-title {
+  font-size: 1.2rem;
+  margin-bottom: 18px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 6px 0;
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+
+nav ul li a:hover,
+nav ul li.selected a {
+  background: var(--link);
+  color: var(--bg);
+}
+
+ul.breadcrumb {
+  display: flex;
+  margin: 0;
+  opacity: 0.6;
+  padding: 0 0 0 0.65em;
+}
+
+ul.breadcrumb li {
+  margin-right: 6px;
+}
+
+ul.breadcrumb li::marker {
+  content: "/ ";
+}
+
+ul.breadcrumb li a {
+  color: var(--fg);
+  font-size: 0.875em;
+  margin-right: 0.5em;
+}
+
+footer {
+  padding-top: 0;
+}
+
+footer * {
+  font-size: 0.875em;
+}
+
+/* Mobile accessibility */
+nav a {
+  padding: 3px 0;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+  line-height: 1.2em;
+  margin-bottom: 0.3em;
+  position: relative;
+}
+
+h1 {
+  font-size: 1.9em;
+  line-height: 1.4em;
+  margin: 0.5em 0 0.3em;
+}
+
+h2 {
+  font-size: 1.55rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 1.2em;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+h5 {
+  font-size: 1.05em;
+}
+
+.heading-anchor {
+  bottom: 0;
+  opacity: 0;
+  position: absolute;
+  right: calc(100% + 6px);
+}
+
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor {
+  opacity: 1;
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+a.no-link-style {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+code {
+  color: var(--code);
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  line-height: 1.5;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre {
+  font-family: inherit;
+  overflow-x: auto;
+  padding: 0.65em;
+}
+
+sup {
+  margin-left: 2px;
+  position: relative;
+  top: -0.4em;
+  vertical-align: baseline;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--fg);
+  color: var(--fg);
+  margin: 24px 0;
+}
+
+figure {
+  margin: 1.5em 0;
+  overflow-x: auto;
+}
+
+figcaption {
+  font-size: 0.875em;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+
+input {
+  -webkit-appearance: none;
+  background: var(--bg);
+  border: 1px solid var(--fg);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--fg);
+  display: inline-flex;
+  font-size: 1rem;
+  height: 36px;
+  margin: 0;
+  outline: none;
+  padding: 6px 36px 6px 18px;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  table-layout: fixed;
+  width: 100%;
+}
+
+table * {
+  text-align: left;
+  vertical-align: top;
+}
+
+table th {
+  background: rgba(120, 120, 120, 0.1);
+}
+
+table:not(.borderless) th,
+table:not(.borderless) td {
+  border: 1px solid var(--fg);
+  padding: 6px;
+}
+
+img {
+  height: auto;
+  image-orientation: from-image;
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (min-width: 150ch) {
+  header {
+    border-bottom: none;
+    margin: 0 auto;
+    max-width: 65ch;
+    position: sticky;
+    top: 0;
+  }
+
+  nav {
+    margin-right: 36px;
+    position: absolute;
+    right: 100%;
+    text-align: right;
+  }
+
+  nav ul {
+    height: 85vh;
+    margin-right: -18px;
+    overflow-y: auto;
+    padding-right: 18px;
+  }
+
+  nav ul li {
+    margin: 3px 0;
+  }
+}

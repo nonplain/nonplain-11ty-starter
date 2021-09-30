@@ -1,7 +1,6 @@
 ---
 title: Post 2
 date: 2021-09-04
-permalink: /posts/post-2
 ---
 
 # Post 2

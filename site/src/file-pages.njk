@@ -2,11 +2,12 @@
 {
   layout: 'base.njk',
   pagination: {
+      addAllPagesToCollections: true,
+      alias: 'file',
       data: 'files',
       size: 1,
-      alias: 'file',
   },
-  permalink: '/{{ file.metadata.permalink }}/',
+  permalink: '/{{ file.metadata.permalink }}',
   templateEngineOverride: 'njk, md',
 }
 ---
