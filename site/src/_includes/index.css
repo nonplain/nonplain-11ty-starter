@@ -20,6 +20,10 @@
     "Liberation Mono", Courier, monospace;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* Layout */
 body {
   background: var(--bg);
@@ -35,7 +39,7 @@ nav,
 main,
 footer {
   margin: 0 auto;
-  max-width: 65ch;
+  max-width: calc(65ch + 3em);
   min-width: 280px;
   padding: 1.5em;
 }
